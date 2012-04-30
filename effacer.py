@@ -91,12 +91,10 @@ def parse_arguments():
 				conflict_handler='resolve')
 
 	parser.add_argument('-p', '--path', nargs=1, default=os.getcwd(), dest='PATH', required=True,
-		help='''Specify path to the root directory from which files/directories are to be deleted.
-			(default: current working directory)''')
+		help='''Specify path to the root directory from which files/directories are to be deleted. This option is mandatory ''')
 
 	parser.add_argument('-e', '--expression', nargs=1, required=True, default='*', dest='PATTERN',
-		help='''Specify regular expression to match target file/directory to be deleted. By default any given file/folder is deleted. Example: r'\*.php$' - find files ending with `.php`'
-			(default: '*')''')
+		help='''Specify regular expression to match target file/directory to be deleted. By default any given file/folder is deleted. Example: r'\*.php$' - find files ending with `.php`''')
 					
 	parser.add_argument('-type', default='A', choices='AFD', dest='TYPE',
 		help='''What to delete? A - delete both files and directories, F - delete ONLY files, D - delete ONLY directories. (default: 'A')''')
