@@ -8,17 +8,12 @@
 #	-v: verbose - Show verbose mode
 #	-h/--help: help - Show help for using this script
 #	-p/--p: path - String next to `-p` is taken as the root path
-# 	-e/--expression: pattern - A regular expression next to `-m` is taken as the expression
+# 	-e/--expression: pattern - A regular expression next to `-e` is taken as the expression
 # 				to match files and directories
 #################################################################################################	
 
 import os, sys, argparse, re, shutil
 from types import *
-
-# def append_search_result(args, search_result, files_list, search_path):
-# 	search_result = re.search(args['PATTERN'], name)
-# 	if (search_result is not None):
-# 		files_list.append(root)
 
 def show_invalid_exp_msg():
 	print '''Please enter a valid pattern. Example: r'\*.php$' - find files ending with `.php`'''
