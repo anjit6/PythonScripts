@@ -58,21 +58,30 @@ def delete_recursively(args):
 	
 		if (args['TYPE'] == 'F'):
 			if (os.path.isdir(single_file) == False):
-				os.remove(single_file)
-				print_verbose(args, single_file)
+				try:
+					with open(single_file) as f:
+						os.remove(single_file)
+						print_verbose(args, single_file)
+				except IOError as e:
+					print_verbose(args, single_file)
+					# do nothing here
 		
 		elif (args['TYPE'] == 'D'):
 			if (os.path.isdir(single_file) == True):
-				shutil.rmtree(single_file)
+				shutil.rmtree(single_file, True)
 				print_verbose(args, single_file)
 
 		else:
 			if (os.path.isdir(single_file) == True):
-				shutil.rmtree(single_file)
+				shutil.rmtree(single_file, True)
 			else:
-				os.remove(single_file)
-			print_verbose(args, single_file)
-
+				try:
+					with open(single_file) as f:
+						os.remove(single_file)
+						print_verbose(args, single_file)
+				except IOError as e:
+					print_verbose(args, single_file)
+					 
 	exit()
 	
 def parse_arguments():
